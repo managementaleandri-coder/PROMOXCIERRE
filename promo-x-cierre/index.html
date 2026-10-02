@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROMO X CIERRE</title>
+  <meta name="description" content="Música, fechas y links de PROMO X CIERRE. Rap argentino.">
+  <meta name="theme-color" content="#F4EFE3">
+  <meta property="og:title" content="PROMO X CIERRE">
+  <meta property="og:description" content="Música, fechas y links. Pasen y gocen.">
+  <meta property="og:type" content="website">
+  <link rel="preload" href="fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
+  <div class="layout">
+    <!-- El muñeco: decorativo, no interactivo. El brazo se dibuja en #arm-layer. -->
+    <aside class="puppet-col" aria-hidden="true">
+      <div class="puppet-sticky">
+        <div class="puppet" id="puppet">
+          <div class="puppet__art" id="puppet-art"></div>
+          <!-- Punto de donde nace el brazo (en % de la imagen del muñeco, ver --shoulder-x / --shoulder-y) -->
+          <span class="shoulder" id="shoulder"></span>
+          <div class="bubble" id="bubble" hidden></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="hero">
+        <p class="eyebrow" id="tagline"></p>
+        <h1 class="wordmark">
+          <span class="wordmark__line">Promo <span class="x" aria-hidden="true">x</span></span>
+          <span class="wordmark__line">Cierre</span>
+          <span class="sr-only"> — rap argentino</span>
+        </h1>
+      </header>
+
+      <nav class="links" id="links" aria-label="Escuchá y seguí a Promo x Cierre"></nav>
+
+      <section class="block" id="fechas" aria-labelledby="h-fechas">
+        <div class="zip" aria-hidden="true"></div>
+        <h2 id="h-fechas">Fechas</h2>
+        <ol class="shows" id="shows"></ol>
+      </section>
+
+      <section class="block" id="discos" aria-labelledby="h-discos">
+        <div class="zip" aria-hidden="true"></div>
+        <h2 id="h-discos">Discos</h2>
+        <div class="releases" id="releases"></div>
+      </section>
+
+      <section class="block" id="quienes" aria-labelledby="h-quienes">
+        <div class="zip" aria-hidden="true"></div>
+        <h2 id="h-quienes">Quiénes son</h2>
+        <div class="crew" id="crew"></div>
+      </section>
+
+      <footer class="foot">
+        <div class="zip" aria-hidden="true"></div>
+        <p>PROMO X CIERRE · Argentina · 2026</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Capa del brazo: ocupa toda la pantalla y no captura clics -->
+  <svg class="arm-layer" id="arm-layer" aria-hidden="true" focusable="false">
+    <path id="arm-outline" fill="none" stroke="#14110F" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="arm-fill" fill="none" stroke="#74ACDF" stroke-linecap="round" stroke-linejoin="round"/>
+    <g id="hand">
+      <g class="glove" stroke="#14110F" stroke-width="4" stroke-linejoin="round" fill="#fff">
+        <ellipse cx="20" cy="-11" rx="12" ry="6.5"/>
+        <ellipse cx="23" cy="0" rx="13" ry="6.5"/>
+        <ellipse cx="20" cy="11" rx="12" ry="6.5"/>
+        <ellipse cx="2" cy="-19" rx="10" ry="6" transform="rotate(-38 2 -19)"/>
+        <rect x="-30" y="-14" width="15" height="28" rx="6"/>
+        <ellipse cx="2" cy="0" rx="19" ry="16"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
