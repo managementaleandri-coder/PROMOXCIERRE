@@ -1,46 +1,56 @@
 # PROMO X CIERRE — investigación y propuesta de web
 
-> **Límite de esta investigación:** el entorno donde se hizo bloquea Instagram, Linktree, X, YouTube, Apple Music y Album of the Year. **No pude abrir ninguna de esas páginas**; todo lo de abajo sale de resúmenes de buscador. El Linktree **no lo vi**, así que fechas y links que viven ahí quedaron como pendientes (marcados en la página).
+> **Límite de la investigación:** el entorno de desarrollo bloquea Instagram, atom.bio/pxc, X, YouTube, Apple Music y Album of the Year, así que **no pude abrir ninguna de esas páginas**. La información sale de (1) resúmenes de buscador y (2) lo que pasó el cliente: captura del muñeco, flyer de la gira y los links propios de atom.bio.
 
 ## Quiénes son
 
 - **Proyecto de rap argentino**, catalogado como *Latin Rap / Abstract Hip Hop / Drumless* (Album of the Year). Unos 23,9 mil oyentes mensuales en Spotify según un resumen de búsqueda (sin fecha de medición).
-- **Créditos del EP** (tuit de @soytarufa, 13 feb 2026): voz y beats **Tarufa**; beats **Psicomance** y **Priveloop**; visuales **Ian Sánchez**. Una fuente los presenta como grupo de esas cuatro personas. *A confirmar con ellos:* si son grupo o un solista con productores, y los nombres exactos.
-- **Tono:** referencias culturales argentinas (fútbol, sala de ensayo, reposera, "wachas"), humor y producción con samples. Un usuario en X escribió *"no sé quiénes son, no sé quién produce, quién rapea"*: el misterio juega a favor de que los representen **muñecos**.
-- **Discos:** EP *PROMO X CIERRE* (13 feb 2026; temas como *Buenas y Santas, Reposera, Me Voy, El Acto en Cuestión, Van a Llover Ranas, Rap Fútbol Sala de Ensayo, Pido Permiso, Octavo Color* — un listado dice 8 temas y otro 6, verificar); álbum *CÓMO CONSEGUIR WACHAS* (17 ago 2026, 13 temas, incluye *Pasen*, *Si quieren magia avisan*, *Feliz domingo*); single *Animales sueltos* con Halpe.
-- **Shows:** un resultado menciona una presentación del EP en **Batacazo Cultural** (Almagro) con Swaggedvision, ICY GENESIS, LTHELIZARD, STRIDAH (UXC), Simoncito y Zaya, con entradas por **Alpogo**. Sin fecha: puede ser un show ya pasado, por eso no está en la página.
+- **Créditos del EP** (tuit de @soytarufa, 13 feb 2026): voz y beats **Tarufa**; beats **Psicomance** y **Priveloop**; visuales **Ian Sánchez**. *A confirmar con ellos:* si son grupo o un solista con productores, y los nombres exactos.
+- **Tono:** referencias culturales argentinas (fútbol, sala de ensayo, reposera, "wachas"), humor y producción con samples. Un usuario en X escribió *"no sé quiénes son, no sé quién produce, quién rapea"*: el misterio juega a favor de que los represente un **muñeco**.
+- **Discos:** EP *PROMO X CIERRE* (13 feb 2026); álbum *CÓMO CONSEGUIR WACHAS* (17 ago 2026, 13 temas); single *Animales sueltos* con Halpe.
+- **Gira actual: CCW TOUR** (CCW = Cómo Conseguir Wachas), 7 fechas según el flyer:
 
-Fuentes usadas (solo vía buscador): [X](https://x.com/promoxcierre) · [Apple Music](https://music.apple.com/us/artist/promo-x-cierre/1874706301) · [Album of the Year](https://www.albumoftheyear.org/artist/641141-promo-x-cierre/) · YouTube [EP](https://www.youtube.com/watch?v=U_RfPWhjLkY) y [álbum](https://www.youtube.com/watch?v=5Nxp12kCCFE).
+| Fecha | Ciudad | Lugar | Entradas |
+|---|---|---|---|
+| 9/10 | Capital Federal | Uniclub (20:00 hs) | **Agotado** |
+| 11/10 | La Plata | CDG · La Plata Sport | posteo de Instagram (no es ticketera) |
+| 17/10 | Morón | West Party | Alpogo |
+| 18/10 | Quilmes | Club Tucumán | Central Ticket |
+| 5/12 | Rosario | HUM | sin link directo |
+| 6/12 | Santa Fe | sede a anunciar | sin link directo |
+| 12/12 | Mar del Plata | Brewhouse | sin link directo |
+
+El flyer no trae año: se asume 2026. "Uniclub" y "20:00" salen de un recorte del flyer de CABA más un listado de entradas encontrado por buscador (Uniclub, Guardia Vieja 3360, Abasto).
 
 ## Propuesta
 
-**Idea:** una sola pantalla con onda de fanzine/cartel de recital. A la izquierda, **el muñeco principal** (fijo mientras scrolleás); a la derecha, los botones. **Cuando acercás el mouse a un botón, al muñeco se le estira el brazo, apoya la mano y lo aprieta**: el botón se hunde, el muñeco abre la boca (es un cierre/zipper, guiño al nombre) y dice "PASEN Y GOCEN" (frase de su propio tuit). Hacés clic y te lleva al link.
+**Idea:** una sola pantalla con onda de fanzine/cartel de recital. A la izquierda, **el muñeco principal** (fijo mientras scrolleás); a la derecha, los botones. **Cuando acercás el mouse a un botón, al muñeco se le estira un brazo de cuero negro, apoya la mano y lo aprieta**: el botón se hunde, el muñeco se inclina hacia él, rebota y dice "PASEN Y GOCEN" (frase de su propio tuit). Hacés clic y te lleva al link.
 
 | Zona | Contenido |
 |---|---|
 | Cinta superior | Títulos de sus temas en movimiento |
-| Hero + botones | Álbum, EP, Apple Music, Spotify, Entradas, Instagram, X (lo que hoy está en el Linktree) |
-| Fechas | Tarjetas con fecha, lugar, line-up y botón de entradas; si no hay fechas, mensaje para seguir las redes; las pasadas se ocultan solas |
+| Hero + botones | Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, X |
+| Fechas | La gira: fecha, lugar, botón de entradas o sello AGOTADO; las fechas pasadas se ocultan solas |
 | Discos | Portadas + botón "Escuchar" |
-| Quiénes son | Los muñecos de cada integrante con su rol |
+| Quiénes son | Stickers con nombre y rol de cada integrante |
 
-Los divisores son **cierres**: la lengüeta corre al llegar a cada sección.
+Los divisores son **cierres** (zipper): la lengüeta corre al llegar a cada sección.
 
 **Cómo funciona el brazo:** mouse → se estira a partir de 190 px y aprieta al estar encima · celular → apunta al botón cercano a su altura, "toca" solo cada tanto y aprieta el que tocás · teclado → llega al botón con foco · con "reducir movimiento" activado no hay vaivén ni toques automáticos.
 
 ## Qué hay hecho
 
-Prototipo funcional sin dependencias (HTML + CSS + JS, tipografías incluidas). **Se actualiza editando solo `data.js`** (links, fechas, discos, integrantes).
+Prototipo funcional sin dependencias (HTML + CSS + JS, tipografías incluidas). **Se actualiza editando solo `data.js`** (links, fechas, discos, integrantes y datos del muñeco).
 
-- Los **muñecos son placeholders dibujados por mí**: no son los del grupo.
-- Las **portadas** son bloques de color con el título.
-- Marcado en la página: `LINK PENDIENTE` (Spotify, Entradas, Instagram, single *Animales sueltos*) y `DEMO` (las dos fechas de ejemplo, sin fecha inventada).
+- **Muñeco real**, recortado de la captura enviada (`img/muneco.png`). La captura mide solo 243 px de ancho: en pantalla grande se ve algo blando. Con el PNG original se resuelve.
+- El **brazo** (cuero negro + mano clara) y el rebote son míos: el original está con los brazos cruzados.
+- Las **portadas** de los discos son bloques de color con el título.
 - Para verlo: servir la carpeta (por ej. `npx serve promo-x-cierre`). Abierto con doble clic (`file://`) el navegador bloquea las tipografías.
 
-## Qué falta (en orden)
+## Qué falta
 
-1. **Contenido del Linktree**: pegar los links y fechas, o habilitar `linktr.ee` e `instagram.com` en la red del entorno para que los lea yo.
-2. **Arte de los muñecos reales** (PNG/SVG transparente del principal *sin* un brazo, y de los demás) y las **portadas** de los discos.
-3. Confirmar integrantes, roles y el handle de Instagram.
+1. **Links que todavía no tengo:** Spotify, el single *Animales sueltos*, y entradas directas de Rosario, Santa Fe y Mar del Plata (hoy esos tres botones llevan a atom.bio/pxc). TikTok quedó afuera: el link de atom.bio está roto (no tiene usuario).
+2. **Arte:** PNG original del muñeco (idealmente de cuerpo entero, transparente), los de los otros integrantes si existen, y las portadas.
+3. Confirmar integrantes y roles, y el año de la gira.
 4. Dominio y hosting (GitHub Pages o Netlify alcanzan).
 5. Opcional: fechas desde una planilla de Google para que las carguen ellos, y reproductor de Spotify embebido.

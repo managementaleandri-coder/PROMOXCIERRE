@@ -30,9 +30,10 @@
   --body: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --gutter: clamp(16px, 4vw, 40px);
   --ticker-h: 38px;
-  /* Dónde nace el brazo sobre la imagen del muñeco (en %). Cambiar si se reemplaza el dibujo. */
-  --shoulder-x: 74%;
-  --shoulder-y: 62.5%;
+  /* Dónde nace el brazo sobre la imagen (en %) y proporción de la imagen: los pisa app.js desde data.js */
+  --shoulder-x: 88%;
+  --shoulder-y: 50%;
+  --puppet-ratio: 1.21;
 }
 
 * { box-sizing: border-box; }
@@ -94,14 +95,26 @@ a { color: inherit; }
   place-items: center;
 }
 .puppet {
-  /* alto máx. 78% de la pantalla, proporción 3:4 */
-  width: min(100%, calc(min(78svh, 580px) * 0.75));
-  aspect-ratio: 3 / 4;
+  /* alto máx. 78% de la pantalla */
+  width: min(100%, 440px, calc(min(78svh, 620px) / var(--puppet-ratio)));
   position: relative;
   animation: bob 3.4s ease-in-out infinite;
 }
 @keyframes bob { 50% { transform: translateY(-7px) rotate(0.7deg); } }
-.puppet__art, .puppet__art svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.puppet__lean { position: relative; transform-origin: 50% 100%; will-change: transform; }
+.puppet__art { transform-origin: 50% 100%; }
+.puppet__art img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; filter: drop-shadow(6px 8px 0 rgba(20, 17, 15, 0.18));
+  /* la imagen está cortada a la altura de la cintura: se desvanece hacia abajo */
+  -webkit-mask-image: linear-gradient(to bottom, #000 74%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 74%, transparent 100%);
+}
+.puppet.is-talking .puppet__art { animation: squash 0.5s ease-out; }
+@keyframes squash {
+  0% { transform: scale(1, 1); }
+  28% { transform: scale(1.04, 0.95); }
+  62% { transform: scale(0.99, 1.025); }
+  100% { transform: scale(1, 1); }
+}
 .shoulder {
   position: absolute;
   left: var(--shoulder-x);
@@ -109,15 +122,6 @@ a { color: inherit; }
   width: 2px; height: 2px;
   transform: translate(-50%, -50%);
 }
-.puppet .eye { transform-box: fill-box; transform-origin: center; animation: blink 5.5s infinite; }
-@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96.5% { transform: scaleY(0.08); } }
-.puppet .pupil { transition: transform 0.08s linear; }
-.puppet .brows { transition: transform 0.15s; }
-.puppet.is-talking .brows { transform: translateY(-7px); }
-.puppet .m-open { opacity: 0; transition: opacity 0.1s; }
-.puppet.is-talking .m-open { opacity: 1; }
-.puppet.is-talking .m-closed { opacity: 0; }
-
 .bubble {
   position: absolute;
   left: 66%;
@@ -296,7 +300,7 @@ a { color: inherit; }
   background: var(--white);
   border: var(--line) solid var(--ink);
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 12px 16px 14px;
 }
 .show__date {
   width: 76px;
@@ -313,6 +317,7 @@ a { color: inherit; }
 .show__venue { font-family: var(--display); text-transform: uppercase; font-size: 1.1rem; line-height: 1.15; }
 .show__meta { font-size: 0.9rem; opacity: 0.85; }
 .show .btn { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
+.show.is-sold { background: #ece6d6; }
 .show.is-demo::before {
   content: "DEMO";
   position: absolute; top: -12px; right: 14px; z-index: 1;
@@ -322,6 +327,23 @@ a { color: inherit; }
   transform: rotate(3deg);
 }
 .empty { font-weight: 700; }
+.tour-chip {
+  display: inline-block;
+  margin: -6px 0 18px;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper);
+  padding: 0.4rem 0.75rem;
+  transform: rotate(-1.5deg);
+}
+.tour-chip b { color: var(--sun); }
+.sold {
+  grid-column: 1 / -1; justify-self: start; margin-top: 4px;
+  font-family: var(--display); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--tomato);
+  border: var(--line) solid var(--tomato); border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  transform: rotate(-3deg);
+}
 
 /* Discos */
 .releases { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px 20px; }
@@ -363,12 +385,24 @@ a { color: inherit; }
 .release .btn { justify-self: start; }
 
 /* Integrantes */
-.crew { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 20px 16px; }
-.member { display: grid; justify-items: center; gap: 4px; text-align: center; }
-.member svg { width: 100%; max-width: 170px; height: auto; transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1); }
-.member:hover svg { transform: rotate(-5deg) translateY(-6px) scale(1.04); }
-.member__name { font-family: var(--display); text-transform: uppercase; font-size: 1.05rem; }
-.member__role { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.75; }
+.crew { display: flex; flex-wrap: wrap; gap: 14px; }
+.member {
+  --bg: var(--paper);
+  background: var(--bg);
+  border: var(--line) solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 0.6rem 1rem;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.member:hover { transform: rotate(0deg) translateY(-4px) scale(1.05); }
+.member[data-tone="sun"] { --bg: var(--sun); }
+.member[data-tone="sky"] { --bg: var(--sky); }
+.member[data-tone="tomato"] { --bg: var(--tomato); color: var(--paper); }
+.member[data-tone="paper"] { --bg: var(--white); }
+.member__name { font-family: var(--display); text-transform: uppercase; font-size: 1.15rem; line-height: 1.1; }
+.member__role { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
 
 .foot { margin-top: clamp(44px, 7vw, 84px); max-width: 640px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.8rem; }
 
@@ -396,12 +430,11 @@ a { color: inherit; }
 
 /* ---------- Celular y pantallas angostas ---------- */
 @media (max-width: 899px) {
-  :root { --shoulder-x: 74%; --shoulder-y: 62.5%; }
-  .layout { display: block; padding-left: calc(var(--gutter) + 80px); }
+  .layout { display: block; padding-left: calc(var(--gutter) + 84px); }
   /* El muñeco queda fijo asomándose por el borde izquierdo, a media altura */
-  .puppet-col { position: fixed; left: -34px; top: 50%; transform: translateY(-50%); z-index: 3; pointer-events: none; }
+  .puppet-col { position: fixed; left: -42px; top: 50%; transform: translateY(-50%); z-index: 3; pointer-events: none; }
   .puppet-sticky { position: static; height: auto; display: block; }
-  .puppet { width: 144px; }
+  .puppet { width: 142px; }
   .bubble { display: none; }
   .links, .block, .foot { max-width: none; }
   .show { grid-template-columns: 1fr; }
@@ -410,8 +443,9 @@ a { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .puppet.is-talking .puppet__art { animation: none; }
   html { scroll-behavior: auto; }
-  .ticker__track, .puppet, .wordmark .x, .puppet .eye, .bubble.pop { animation: none; }
+  .ticker__track, .puppet, .wordmark .x, .bubble.pop { animation: none; }
   .zip::after { left: calc(100% - 28px); transition: none; }
-  .btn, .member svg { transition: none; }
+  .btn, .member { transition: none; }
 }
