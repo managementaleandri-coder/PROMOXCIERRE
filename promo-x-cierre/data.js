@@ -10,12 +10,10 @@ window.PXC = {
   name: "PROMO X CIERRE",
   tagline: "Rap argentino · hip hop abstracto",
 
-  // El muñeco principal. `shoulder` = dónde nace el brazo, en % [ancho, alto] sobre la imagen.
-  // Para cambiar el arte: reemplazar img/muneco.png (PNG transparente) y ajustar `shoulder`.
+  // El muñeco. Para cambiar el arte: reemplazar img/muneco.png (PNG transparente, recortado a la cintura o entero).
   puppet: {
     src: "img/muneco.png",
     alt: "",
-    shoulder: [88, 50],
   },
 
   // Frases que dice el muñeco al apretar un botón ("PASEN Y GOCEN" es de su propio tuit del EP)
@@ -35,7 +33,7 @@ window.PXC = {
     { label: "X / Twitter", sub: "@promoxcierre", href: "https://x.com/promoxcierre", tone: "paper" },
   ],
 
-  tour: { name: "CCW Tour", sub: "Promo x Cierre presenta" },
+  tour: { name: "CCW Tour", sub: "Presenta" },
 
   // Fechas (flyer CCW TOUR). date: "AAAA-MM-DD". Las fechas pasadas se ocultan solas.
   // soldOut: true → muestra AGOTADO. tickets: link directo de esa fecha (si falta, usa ticketsUrl).
