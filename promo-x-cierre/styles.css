@@ -201,7 +201,7 @@ a { color: inherit; }
 .btn--icon { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
 .btn__icon { display: grid; place-items: center; width: 44px; height: 44px; }
 .btn__icon svg { width: 34px; height: 34px; display: block; }
-.btn--icon small { text-transform: none; letter-spacing: 0.02em; font-size: 0.8rem; overflow-wrap: anywhere; }
+.btn--icon small { text-transform: none; letter-spacing: 0; font-size: 0.74rem; overflow-wrap: anywhere; }
 
 .btn--sm {
   min-height: 58px;
