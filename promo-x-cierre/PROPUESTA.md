@@ -23,7 +23,7 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 - **Contenido:** todo se edita en `data.js` (links, fechas, discos, integrantes). Las fechas van como `AAAA-MM-DD`.
 - **Arte:** reemplazar `img/muneco.png` por el PNG real (transparente). Si es de cuerpo entero, no hay que tocar nada más.
-- **GitHub Pages:** el workflow `.github/workflows/pages.yml` arma el sitio y lo publica en la rama `gh-pages` en cada cambio. Si Pages no apareciera solo: *Settings → Pages → Deploy from a branch → gh-pages / (root)*. URL resultante: `https://managementaleandri-coder.github.io/promoxcierre/` desde el repositorio `promoxcierre` (la primera referencia, con brazo, queda en `/v1/`).
+- **GitHub Pages:** el workflow `.github/workflows/pages.yml` arma el sitio y lo publica en la rama `gh-pages` en cada cambio. Si Pages no apareciera solo: *Settings → Pages → Deploy from a branch → gh-pages / (root)*. URL: **https://managementaleandri-coder.github.io/PROMOXCIERRE/** (la primera referencia, con brazo, queda en `/v1/`).
 - **Verlo en local:** servir la carpeta (`npx serve promo-x-cierre`). Abierto con doble clic, el navegador bloquea las tipografías.
 
 ## Datos
@@ -37,7 +37,11 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 Google Analytics 4 (gratis). Pasos: en analytics.google.com crear una cuenta y una propiedad → flujo de datos "Web" con la URL del sitio → copiar el **ID de medición** (empieza con `G-`) → pegarlo en `data.js` → `analytics: { ga4: "G-..." }`. Desde ahí se miden visitas, origen (Instagram, X, directo), país, dispositivo y cada botón tocado (eventos `click_spotify`, `click_entradas_west_party`, `click_whatsapp`, etc., en Informes → Interacción → Eventos).
 
-Para saber desde dónde entran, usar links distintos en cada red: `?utm_source=instagram&utm_medium=bio`, `?utm_source=instagram&utm_medium=story`, `?utm_source=x&utm_medium=post`. No funciona en la vista previa de claude.ai, solo en el sitio publicado.
+Para saber desde dónde entran, usar un link distinto en cada lugar:
+- Bio de Instagram: `https://managementaleandri-coder.github.io/PROMOXCIERRE/?utm_source=instagram&utm_medium=bio`
+- Historias de Instagram: `https://managementaleandri-coder.github.io/PROMOXCIERRE/?utm_source=instagram&utm_medium=story`
+- X: `https://managementaleandri-coder.github.io/PROMOXCIERRE/?utm_source=x&utm_medium=post`
+- YouTube (descripciones): `https://managementaleandri-coder.github.io/PROMOXCIERRE/?utm_source=youtube&utm_medium=description` No funciona en la vista previa de claude.ai, solo en el sitio publicado.
 
 ## Pendiente
 
