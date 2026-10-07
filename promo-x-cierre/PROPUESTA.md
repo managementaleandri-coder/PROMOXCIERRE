@@ -11,9 +11,9 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 ## Secciones
 
-1. Cinta con títulos de sus temas.
+1. Cinta con las fechas de la gira (se arma sola desde los datos).
 2. Nombre + chip de la gira. El muñeco arranca posado sobre el primer botón (entra cayendo).
-3. Botones: Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, X.
+3. Botones: Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, YouTube, X y Booking (WhatsApp).
 4. Fechas de la gira (las pasadas se ocultan solas; Uniclub muestra AGOTADO).
 5. Discos en una tira que se desliza con el dedo.
 6. Quiénes son (stickers con nombre y rol).
@@ -22,7 +22,7 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 - **Contenido:** todo se edita en `data.js` (links, fechas, discos, integrantes). Las fechas van como `AAAA-MM-DD`.
 - **Arte:** reemplazar `img/muneco.png` por el PNG real (transparente). Si es de cuerpo entero, no hay que tocar nada más.
-- **GitHub Pages:** el workflow `.github/workflows/pages.yml` publica solo en cada cambio. Hay que activarlo una vez: *Settings → Pages → Build and deployment → Source: GitHub Actions*. URL resultante: `https://managementaleandri-coder.github.io/chofi-sistema-luces/` (la primera referencia, con brazo, queda en `/v1/`).
+- **GitHub Pages:** el workflow `.github/workflows/pages.yml` arma el sitio y lo publica en la rama `gh-pages` en cada cambio. Si Pages no apareciera solo: *Settings → Pages → Deploy from a branch → gh-pages / (root)*. URL resultante: `https://managementaleandri-coder.github.io/chofi-sistema-luces/` (la primera referencia, con brazo, queda en `/v1/`).
 - **Verlo en local:** servir la carpeta (`npx serve promo-x-cierre`). Abierto con doble clic, el navegador bloquea las tipografías.
 
 ## Datos
@@ -33,7 +33,9 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 ## Pendiente
 
-1. Links: Spotify, single *Animales sueltos*, entradas directas de Rosario, Santa Fe y Mar del Plata. TikTok quedó afuera porque el link de atom.bio está roto.
-2. PNG original del muñeco (la captura es de 243 px de ancho y en pantalla grande se nota) y portadas de los discos.
-3. Confirmar integrantes y roles.
-4. Dominio propio, si quieren.
+1. **Teléfono de booking** (PACT/OVXL): cargarlo en `data.js` → `booking.phone` (solo dígitos con código de país, ej. `5491122334455`). Hasta entonces el botón figura como pendiente.
+2. Link del single *Animales sueltos* (no aparece en búsquedas públicas).
+3. Entradas directas de Rosario, Santa Fe y Mar del Plata (hoy van a atom.bio). TikTok quedó afuera porque el link de atom.bio está roto.
+4. PNG original del muñeco (la captura es de 243 px de ancho y en pantalla grande se nota) y portadas de los discos.
+5. Confirmar integrantes y roles.
+6. Antes de publicar para el público: `showPending: false` en `data.js` oculta todo lo que no tenga link.

@@ -28,10 +28,26 @@ window.PXC = {
     { label: "Cómo conseguir wachas", sub: "Álbum completo", href: "https://www.youtube.com/watch?v=5Nxp12kCCFE", tone: "sun" },
     { label: "Promo x Cierre EP", sub: "EP completo", href: "https://www.youtube.com/watch?v=U_RfPWhjLkY", tone: "sky" },
     { label: "Apple Music", sub: "Todos los discos", href: "https://music.apple.com/us/artist/promo-x-cierre/1874706301", tone: "paper" },
-    { label: "Spotify", sub: "Todos los discos", href: "", pending: true, tone: "paper" },
+    { label: "Spotify", sub: "Todos los discos", href: "https://open.spotify.com/artist/5PQ8KJ220uWD38mtx54q8x", tone: "paper" },
     { label: "Instagram", sub: "@promoxcierre", href: "https://www.instagram.com/promoxcierre", tone: "sky" },
+    { label: "YouTube", sub: "@promoxcierre", href: "https://www.youtube.com/@promoxcierre", tone: "tomato" },
     { label: "X / Twitter", sub: "@promoxcierre", href: "https://x.com/promoxcierre", tone: "paper" },
   ],
+
+  // Contacto de booking (aparece como último botón y en el pie).
+  // phone: solo dígitos, con código de país y sin el 15 (ej. "5491122334455").
+  // mode: "whatsapp" abre un chat con el mensaje de abajo; "tel" llama directo.
+  booking: {
+    label: "Booking",
+    name: "PACT/OVXL",
+    phone: "",
+    mode: "whatsapp",
+    message: "Hola! Escribo por booking de Promo x Cierre.",
+  },
+
+  // true: los botones sin link se muestran marcados como "link pendiente" (útil para revisar).
+  // false: se ocultan (para publicar).
+  showPending: true,
 
   tour: { name: "CCW Tour", sub: "Presenta" },
 
@@ -63,6 +79,6 @@ window.PXC = {
     { name: "Ian Sánchez", role: "Visuales" },
   ],
 
-  // Cinta de arriba: títulos de sus temas
+  // Cinta de arriba: muestra las fechas de la gira. Estos títulos de temas se usan solo si no hay fechas.
   ticker: ["CCW TOUR", "RAP", "FÚTBOL", "SALA DE ENSAYO", "REPOSERA", "VAN A LLOVER RANAS", "FELIZ DOMINGO", "PASEN Y GOCEN"],
 };

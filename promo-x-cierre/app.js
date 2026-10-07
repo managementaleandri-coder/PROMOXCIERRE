@@ -33,14 +33,35 @@
   function render() {
     $("#tagline").textContent = D.tagline;
 
-    const items = D.ticker.map((t) => `<span>${esc(t)}</span>`).join("");
-    $("#ticker").innerHTML = items.repeat(6);
-
-    $("#links").innerHTML = D.links.map((l) => btnHTML(l)).join("");
+    // Botones principales + booking al final
+    const B = D.booking;
+    const digits = B && String(B.phone || "").replace(/\D/g, "");
+    const bookingHref = !digits ? ""
+      : B.mode === "tel" ? `tel:+${digits}`
+      : `https://wa.me/${digits}${B.message ? `?text=${encodeURIComponent(B.message)}` : ""}`;
+    const allLinks = D.links.concat(B ? [{
+      label: B.label || "Booking",
+      sub: `${B.name}${digits ? (B.mode === "tel" ? " · Llamar" : " · WhatsApp") : ""}`,
+      href: bookingHref,
+      tone: "sun",
+    }] : []);
+    const visible = D.showPending === false ? allLinks.filter((l) => l.href && !l.pending) : allLinks;
+    $("#links").innerHTML = visible.map((l) => btnHTML(l)).join("");
+    if (B) $("#foot-text").textContent = `PROMO X CIERRE · Argentina · 2026 · Booking: ${B.name}`;
 
     // Gira: las fechas pasadas se ocultan solas
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const upcoming = D.shows.filter((s) => !s.date || new Date(`${s.date}T00:00:00`) >= today);
+    // Cinta de arriba: las fechas de la gira (si no hay, los títulos de temas de data.js)
+    const tickerItems = upcoming.length
+      ? [D.tour ? D.tour.name : "Fechas"].concat(upcoming.map((s) => {
+          const { day, mon } = fmtDate(s.date);
+          return `${day} ${mon} · ${s.city}${s.soldOut ? " (agotado)" : ""}`;
+        }))
+      : D.ticker;
+    const items = tickerItems.map((t) => `<span>${esc(t)}</span>`).join("");
+    $("#ticker").innerHTML = items.repeat(4);
+
     const tourChip = $("#tour-chip");
     if (D.tour && upcoming.length) {
       tourChip.innerHTML = `${esc(D.tour.sub)} <b>${esc(D.tour.name)}</b> · ${upcoming.length} fechas`;
@@ -62,7 +83,8 @@
         }).join("")
       : '<li class="empty">Sin fechas por ahora. Seguinos en redes para enterarte primero.</li>';
 
-    $("#releases").innerHTML = D.releases.map((r) => `
+    const releases = D.showPending === false ? D.releases.filter((r) => r.href && !r.pending) : D.releases;
+    $("#releases").innerHTML = releases.map((r) => `
       <article class="release">
         <div class="cover" data-tone="${esc(r.tone || "paper")}">${r.cover ? `<img src="${esc(r.cover)}" alt="Portada de ${esc(r.title)}">` : `<span>${esc(r.title)}</span>`}</div>
         <div>
