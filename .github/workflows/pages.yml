@@ -4,7 +4,7 @@ name: Publicar web (GitHub Pages)
 # (si no apareciera, en Settings → Pages elegir "Deploy from a branch" → gh-pages / root).
 on:
   push:
-    branches: [claude/epic-hawking-e9oxf6]
+    branches: [main, claude/epic-hawking-e9oxf6]
     paths:
       - "promo-x-cierre/**"
       - "promo-x-cierre-v1/**"

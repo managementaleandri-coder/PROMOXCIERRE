@@ -198,6 +198,11 @@ a { color: inherit; }
   letter-spacing: 0.1em; text-transform: uppercase;
   padding: 0.15rem 0.5rem; border-radius: 99px;
 }
+.btn--icon { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.btn__icon { display: grid; place-items: center; width: 44px; height: 44px; }
+.btn__icon svg { width: 34px; height: 34px; display: block; }
+.btn--icon small { text-transform: none; letter-spacing: 0.02em; font-size: 0.8rem; overflow-wrap: anywhere; }
+
 .btn--sm {
   min-height: 58px;
   padding: 11px calc(var(--lane) * 0.8) 11px 16px;
@@ -291,6 +296,16 @@ a { color: inherit; }
 }
 .empty { font-weight: 700; }
 
+/* Booking */
+.contact { display: grid; gap: 14px; }
+.contact__name {
+  justify-self: start;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper);
+  padding: 0.4rem 0.7rem;
+  transform: rotate(-1.5deg);
+}
+
 /* Discos: tira horizontal que se desliza con el dedo */
 .strip {
   display: flex;
@@ -364,8 +379,7 @@ a { color: inherit; }
 .member__name { font-family: var(--display); text-transform: uppercase; font-size: 1.1rem; line-height: 1.1; }
 .member__role { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
 
-.foot { margin-top: 56px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; line-height: 1.8; }
-.foot a { text-transform: none; letter-spacing: 0; }
+.foot { margin-top: 56px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; }
 
 /* ---------- El muñeco ---------- */
 .puppet {

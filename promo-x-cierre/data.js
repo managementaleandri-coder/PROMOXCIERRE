@@ -32,7 +32,7 @@ window.PXC = {
     { label: "X / Twitter", sub: "@promoxcierre", href: "https://x.com/promoxcierre", tone: "paper" },
   ],
 
-  // Contacto de booking (botón al final, línea debajo de las fechas y pie).
+  // Contacto de booking (sección propia entre Fechas y Discos: WhatsApp y mail).
   // phone: con código de país y sin el 15. mode: "whatsapp" abre un chat con el mensaje; "tel" llama directo.
   booking: {
     label: "Booking",
@@ -42,6 +42,11 @@ window.PXC = {
     mode: "whatsapp",
     message: "Hola! Escribo por booking de Promo x Cierre.",
   },
+
+  // Métricas con Google Analytics 4: pegar acá el "ID de medición" (empieza con G-). Vacío = no se mide nada.
+  // Mide visitas, de dónde vienen (Instagram, X, directo, links con utm_...), país, dispositivo y cada botón tocado
+  // (eventos "click_..."). Solo funciona en el sitio publicado, no en la vista previa de claude.ai.
+  analytics: { ga4: "" },
 
   // true: los botones sin link se muestran marcados como "link pendiente" (útil para revisar).
   // false: se ocultan (para publicar).

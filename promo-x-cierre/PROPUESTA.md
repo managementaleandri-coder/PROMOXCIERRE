@@ -13,24 +13,31 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 1. Cinta con las fechas de la gira (se arma sola desde los datos).
 2. Nombre + chip de la gira. El muñeco arranca posado sobre el primer botón (entra cayendo).
-3. Botones: Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, YouTube, X y Booking (WhatsApp).
+3. Botones: Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, YouTube, X.
 4. Fechas de la gira (las pasadas se ocultan solas; Uniclub muestra AGOTADO; sin link de entradas muestra PRÓXIMAMENTE DISPONIBLE).
-5. Discos en una tira que se desliza con el dedo.
-6. Quiénes son (stickers con nombre y rol).
+5. Booking: PACT/OVXL con botones de WhatsApp y mail.
+6. Discos en una tira que se desliza con el dedo.
+7. Quiénes son (stickers con nombre y rol).
 
 ## Cómo publicar y actualizar
 
 - **Contenido:** todo se edita en `data.js` (links, fechas, discos, integrantes). Las fechas van como `AAAA-MM-DD`.
 - **Arte:** reemplazar `img/muneco.png` por el PNG real (transparente). Si es de cuerpo entero, no hay que tocar nada más.
-- **GitHub Pages:** el workflow `.github/workflows/pages.yml` arma el sitio y lo publica en la rama `gh-pages` en cada cambio. Si Pages no apareciera solo: *Settings → Pages → Deploy from a branch → gh-pages / (root)*. URL resultante: `https://managementaleandri-coder.github.io/chofi-sistema-luces/` (la primera referencia, con brazo, queda en `/v1/`).
+- **GitHub Pages:** el workflow `.github/workflows/pages.yml` arma el sitio y lo publica en la rama `gh-pages` en cada cambio. Si Pages no apareciera solo: *Settings → Pages → Deploy from a branch → gh-pages / (root)*. URL resultante: `https://managementaleandri-coder.github.io/promoxcierre/` desde el repositorio `promoxcierre` (la primera referencia, con brazo, queda en `/v1/`).
 - **Verlo en local:** servir la carpeta (`npx serve promo-x-cierre`). Abierto con doble clic, el navegador bloquea las tipografías.
 
 ## Datos
 
 - Gira **CCW TOUR** según el flyer (sin año en el flyer; se asume 2026): 9/10 Uniclub, CABA (agotado) · 11/10 CDG La Plata Sport · 17/10 West Party, Morón · 18/10 Club Tucumán, Quilmes · 5/12 HUM, Rosario · 6/12 Santa Fe (sede a anunciar) · 12/12 Brewhouse, Mar del Plata.
 - Links de entradas: Quilmes (Central Ticket), Morón (Alpogo), La Plata (posteo de Instagram, por eso el botón dice "Info del show"). Rosario, Santa Fe y Mar del Plata: "Próximamente disponible".
-- Booking: PACT/OVXL · WhatsApp +54 9 11 6744 1775 · pato@pactgroup.com.ar (botón al final y pie de página).
+- Booking: PACT/OVXL · WhatsApp +54 9 11 6744 1775 · pato@pactgroup.com.ar (sección propia entre Fechas y Discos, con logos).
 - Integrantes según los créditos del EP (tuit de @soytarufa): Tarufa (voz y beats), Psicomance y Priveloop (beats), Ian Sánchez (visuales). A confirmar.
+
+## Métricas
+
+Google Analytics 4 (gratis). Pasos: en analytics.google.com crear una cuenta y una propiedad → flujo de datos "Web" con la URL del sitio → copiar el **ID de medición** (empieza con `G-`) → pegarlo en `data.js` → `analytics: { ga4: "G-..." }`. Desde ahí se miden visitas, origen (Instagram, X, directo), país, dispositivo y cada botón tocado (eventos `click_spotify`, `click_entradas_west_party`, `click_whatsapp`, etc., en Informes → Interacción → Eventos).
+
+Para saber desde dónde entran, usar links distintos en cada red: `?utm_source=instagram&utm_medium=bio`, `?utm_source=instagram&utm_medium=story`, `?utm_source=x&utm_medium=post`. No funciona en la vista previa de claude.ai, solo en el sitio publicado.
 
 ## Pendiente
 

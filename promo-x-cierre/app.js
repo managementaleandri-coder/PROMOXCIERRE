@@ -13,13 +13,19 @@
   const cssPx = (name) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
 
   /* ===================================================================== Contenido */
-  const btnHTML = ({ label, sub, href, pending, tone }, small = false) => {
+  const btnHTML = ({ label, sub, href, pending, tone, icon }, small = false) => {
     const isPending = pending || !href;
     const attrs = isPending
       ? 'href="#" aria-disabled="true"'
       : `href="${esc(href)}" target="_blank" rel="noopener noreferrer"`;
-    return `<a class="btn${small ? " btn--sm" : ""}${isPending ? " is-pending" : ""}" data-reach data-tone="${esc(tone || "paper")}" ${attrs}>
-      <span>${esc(label)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></a>`;
+    return `<a class="btn${small ? " btn--sm" : ""}${icon ? " btn--icon" : ""}${isPending ? " is-pending" : ""}" data-reach data-tone="${esc(tone || "paper")}" ${attrs}>
+      ${icon ? `<span class="btn__icon" aria-hidden="true">${icon}</span>` : ""}<span>${esc(label)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></a>`;
+  };
+
+  // Logos (dibujados en línea para no depender de nada externo)
+  const ICON = {
+    whatsapp: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6.5L21 7"/></svg>',
   };
 
   function fmtDate(iso) {
@@ -39,16 +45,18 @@
     const bookingHref = !digits ? ""
       : B.mode === "tel" ? `tel:+${digits}`
       : `https://wa.me/${digits}${B.message ? `?text=${encodeURIComponent(B.message)}` : ""}`;
-    const allLinks = D.links.concat(B ? [{
-      label: B.label || "Booking",
-      sub: `${B.name}${digits ? (B.mode === "tel" ? " · Llamar" : " · WhatsApp") : ""}`,
-      href: bookingHref,
-      tone: "sun",
-    }] : []);
-    const visible = D.showPending === false ? allLinks.filter((l) => l.href && !l.pending) : allLinks;
+    const visible = D.showPending === false ? D.links.filter((l) => l.href && !l.pending) : D.links;
     $("#links").innerHTML = visible.map((l) => btnHTML(l)).join("");
+
+    // Sección Booking: WhatsApp (o llamada) y mail
     if (B) {
-      $("#foot-text").innerHTML = `PROMO X CIERRE · Argentina · 2026<br>Booking: ${esc(B.name)}${B.phone ? ` · ${esc(B.phone)}` : ""}${B.email ? ` · <a href="mailto:${esc(B.email)}">${esc(B.email)}</a>` : ""}`;
+      const contact = [
+        { label: B.mode === "tel" ? "Llamar" : "WhatsApp", sub: B.phone || "", href: bookingHref, tone: "sun", icon: ICON.whatsapp },
+        B.email ? { label: "Mail", sub: B.email, href: `mailto:${B.email}?subject=${encodeURIComponent("Booking Promo x Cierre")}`, tone: "paper", icon: ICON.mail } : null,
+      ].filter(Boolean).filter((c) => D.showPending !== false || c.href);
+      $("#contact").innerHTML = `<p class="contact__name">${esc(B.name)}</p>` + contact.map((c) => btnHTML(c)).join("");
+    } else {
+      $("#booking").hidden = true;
     }
 
     // Gira: las fechas pasadas se ocultan solas
@@ -113,6 +121,36 @@
     zips.forEach((z) => io.observe(z));
   } else {
     zips.forEach((z) => z.classList.add("in"));
+  }
+
+  /* =====================================================================
+   * Métricas (Google Analytics 4). Se carga solo si data.js tiene un ID.
+   * Cada botón tocado manda un evento "click_<botón>" con la URL de destino.
+   * ===================================================================== */
+  const GA = D.analytics && /^G-[A-Z0-9]+$/i.test(D.analytics.ga4 || "") ? D.analytics.ga4 : "";
+  if (GA) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", GA);
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA)}`;
+    document.head.appendChild(s);
+  }
+  const slug = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  function track(btn) {
+    if (!GA || typeof window.gtag !== "function") return;
+    const show = btn.closest(".show"), rel = btn.closest(".release");
+    const what = show ? `entradas_${slug(show.querySelector(".show__venue")?.textContent)}`
+      : rel ? `escuchar_${slug(rel.querySelector(".release__title")?.textContent)}`
+      : slug(btn.querySelector("span:not(.btn__icon)")?.firstChild?.textContent || btn.textContent);
+    const section = show ? "fechas" : rel ? "discos" : btn.closest("#contact") ? "booking" : "botones";
+    gtag("event", `click_${what}`.slice(0, 40), {
+      link_url: btn.getAttribute("href") || "",
+      section,
+      transport_type: "beacon",
+    });
   }
 
   /* Aviso para links que todavía no están cargados */
@@ -313,6 +351,7 @@
     const pending = btn.classList.contains("is-pending");
     const href = pending ? "" : btn.getAttribute("href");
     if (pending) e.preventDefault();
+    if (!pending) track(btn);
 
     if (input === "touch" && !reduced.matches) {
       // táctil: primero va hasta el botón y lo aprieta; recién al posarse abre el link
