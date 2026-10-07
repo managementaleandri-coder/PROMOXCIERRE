@@ -47,7 +47,9 @@
     }] : []);
     const visible = D.showPending === false ? allLinks.filter((l) => l.href && !l.pending) : allLinks;
     $("#links").innerHTML = visible.map((l) => btnHTML(l)).join("");
-    if (B) $("#foot-text").textContent = `PROMO X CIERRE · Argentina · 2026 · Booking: ${B.name}`;
+    if (B) {
+      $("#foot-text").innerHTML = `PROMO X CIERRE · Argentina · 2026<br>Booking: ${esc(B.name)}${B.phone ? ` · ${esc(B.phone)}` : ""}${B.email ? ` · <a href="mailto:${esc(B.email)}">${esc(B.email)}</a>` : ""}`;
+    }
 
     // Gira: las fechas pasadas se ocultan solas
     const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -74,7 +76,9 @@
           const meta = [s.city, s.note, s.lineup && s.lineup.length ? `con ${s.lineup.join(", ")}` : ""].filter(Boolean).join(" · ");
           const action = s.soldOut
             ? '<span class="sold">Agotado</span>'
-            : btnHTML({ label: s.ticketLabel || "Entradas", href: s.tickets || D.ticketsUrl, tone: "tomato" }, true);
+            : s.tickets
+              ? btnHTML({ label: s.ticketLabel || "Entradas", href: s.tickets, tone: "tomato" }, true)
+              : '<span class="soon">Próximamente disponible</span>';
           return `<li class="show${s.soldOut ? " is-sold" : ""}">
             <div class="show__date"><span class="show__day">${esc(day)}</span><span class="show__mon">${esc(mon)}</span></div>
             <div class="show__info"><p class="show__venue">${esc(s.venue)}</p><p class="show__meta">${esc(meta)}</p></div>

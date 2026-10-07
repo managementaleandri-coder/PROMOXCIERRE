@@ -19,8 +19,6 @@ window.PXC = {
   // Frases que dice el muñeco al apretar un botón ("PASEN Y GOCEN" es de su propio tuit del EP)
   phrases: ["PASEN Y GOCEN", "¡DALE!", "¡ESO!", "SI QUIEREN MAGIA, AVISAN", "¡PASEN!"],
 
-  // Link-in-bio oficial. Se usa para "Entradas" mientras no haya un link directo por fecha.
-  ticketsUrl: "https://www.atom.bio/pxc",
 
   // Botones principales. tone: sun | sky | paper | tomato
   links: [
@@ -34,13 +32,13 @@ window.PXC = {
     { label: "X / Twitter", sub: "@promoxcierre", href: "https://x.com/promoxcierre", tone: "paper" },
   ],
 
-  // Contacto de booking (aparece como último botón y en el pie).
-  // phone: solo dígitos, con código de país y sin el 15 (ej. "5491122334455").
-  // mode: "whatsapp" abre un chat con el mensaje de abajo; "tel" llama directo.
+  // Contacto de booking (botón al final, línea debajo de las fechas y pie).
+  // phone: con código de país y sin el 15. mode: "whatsapp" abre un chat con el mensaje; "tel" llama directo.
   booking: {
     label: "Booking",
     name: "PACT/OVXL",
-    phone: "",
+    phone: "+54 9 11 6744 1775",
+    email: "pato@pactgroup.com.ar",
     mode: "whatsapp",
     message: "Hola! Escribo por booking de Promo x Cierre.",
   },
@@ -52,22 +50,21 @@ window.PXC = {
   tour: { name: "CCW Tour", sub: "Presenta" },
 
   // Fechas (flyer CCW TOUR). date: "AAAA-MM-DD". Las fechas pasadas se ocultan solas.
-  // soldOut: true → muestra AGOTADO. tickets: link directo de esa fecha (si falta, usa ticketsUrl).
+  // soldOut: true → muestra AGOTADO. tickets: link de esa fecha; si falta, muestra PRÓXIMAMENTE.
   shows: [
     { date: "2026-10-09", venue: "Uniclub", city: "Capital Federal", note: "20:00 hs", soldOut: true },
     // La Plata: el link de atom.bio lleva a un posteo de Instagram (no es una ticketera)
     { date: "2026-10-11", venue: "CDG · La Plata Sport", city: "La Plata", tickets: "https://www.instagram.com/p/DdusCXIKXnr/", ticketLabel: "Info del show" },
     { date: "2026-10-17", venue: "West Party", city: "Morón", tickets: "https://alpogo.com/evento/show-promo-x-cierre-en-moron-29253" },
     { date: "2026-10-18", venue: "Club Tucumán", city: "Quilmes", tickets: "https://centralticket.net/10383" },
-    { date: "2026-12-05", venue: "HUM", city: "Rosario", tickets: "" },
-    { date: "2026-12-06", venue: "Sede a anunciar", city: "Santa Fe", tickets: "" },
-    { date: "2026-12-12", venue: "Brewhouse", city: "Mar del Plata", tickets: "" },
+    { date: "2026-12-05", venue: "HUM", city: "Rosario" },
+    { date: "2026-12-06", venue: "Sede a anunciar", city: "Santa Fe" },
+    { date: "2026-12-12", venue: "Brewhouse", city: "Mar del Plata" },
   ],
 
   // Discografía (las portadas son placeholders: reemplazar por las reales con `cover: "img/archivo.jpg"`)
   releases: [
     { title: "Cómo conseguir wachas", type: "Álbum", date: "17 ago 2026", detail: "13 temas", href: "https://www.youtube.com/watch?v=5Nxp12kCCFE", tone: "sun" },
-    { title: "Animales sueltos", type: "Single", date: "2026", detail: "con Halpe", href: "", pending: true, tone: "tomato" },
     { title: "Promo x Cierre", type: "EP", date: "13 feb 2026", detail: "", href: "https://www.youtube.com/watch?v=U_RfPWhjLkY", tone: "sky" },
   ],
 

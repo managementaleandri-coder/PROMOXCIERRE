@@ -280,6 +280,15 @@ a { color: inherit; }
   padding: 0.3rem 0.8rem;
   transform: rotate(-3deg);
 }
+.soon {
+  justify-self: start;
+  font-family: var(--display); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink);
+  background: var(--sky);
+  border: var(--line) solid var(--ink); border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  transform: rotate(-2deg);
+}
 .empty { font-weight: 700; }
 
 /* Discos: tira horizontal que se desliza con el dedo */
@@ -355,7 +364,8 @@ a { color: inherit; }
 .member__name { font-family: var(--display); text-transform: uppercase; font-size: 1.1rem; line-height: 1.1; }
 .member__role { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
 
-.foot { margin-top: 56px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; }
+.foot { margin-top: 56px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; line-height: 1.8; }
+.foot a { text-transform: none; letter-spacing: 0; }
 
 /* ---------- El muñeco ---------- */
 .puppet {

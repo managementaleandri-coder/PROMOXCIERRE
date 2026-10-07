@@ -14,7 +14,7 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 1. Cinta con las fechas de la gira (se arma sola desde los datos).
 2. Nombre + chip de la gira. El muñeco arranca posado sobre el primer botón (entra cayendo).
 3. Botones: Entradas CCW Tour, álbum, EP, Apple Music, Spotify, Instagram, YouTube, X y Booking (WhatsApp).
-4. Fechas de la gira (las pasadas se ocultan solas; Uniclub muestra AGOTADO).
+4. Fechas de la gira (las pasadas se ocultan solas; Uniclub muestra AGOTADO; sin link de entradas muestra PRÓXIMAMENTE DISPONIBLE).
 5. Discos en una tira que se desliza con el dedo.
 6. Quiénes son (stickers con nombre y rol).
 
@@ -28,14 +28,13 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 ## Datos
 
 - Gira **CCW TOUR** según el flyer (sin año en el flyer; se asume 2026): 9/10 Uniclub, CABA (agotado) · 11/10 CDG La Plata Sport · 17/10 West Party, Morón · 18/10 Club Tucumán, Quilmes · 5/12 HUM, Rosario · 6/12 Santa Fe (sede a anunciar) · 12/12 Brewhouse, Mar del Plata.
-- Links de entradas: Quilmes (Central Ticket), Morón (Alpogo), La Plata (posteo de Instagram, por eso el botón dice "Info del show"). Rosario, Santa Fe y Mar del Plata van a `atom.bio/pxc` hasta que haya link directo.
+- Links de entradas: Quilmes (Central Ticket), Morón (Alpogo), La Plata (posteo de Instagram, por eso el botón dice "Info del show"). Rosario, Santa Fe y Mar del Plata: "Próximamente disponible".
+- Booking: PACT/OVXL · WhatsApp +54 9 11 6744 1775 · pato@pactgroup.com.ar (botón al final y pie de página).
 - Integrantes según los créditos del EP (tuit de @soytarufa): Tarufa (voz y beats), Psicomance y Priveloop (beats), Ian Sánchez (visuales). A confirmar.
 
 ## Pendiente
 
-1. **Teléfono de booking** (PACT/OVXL): cargarlo en `data.js` → `booking.phone` (solo dígitos con código de país, ej. `5491122334455`). Hasta entonces el botón figura como pendiente.
-2. Link del single *Animales sueltos* (no aparece en búsquedas públicas).
-3. Entradas directas de Rosario, Santa Fe y Mar del Plata (hoy van a atom.bio). TikTok quedó afuera porque el link de atom.bio está roto.
-4. PNG original del muñeco (la captura es de 243 px de ancho y en pantalla grande se nota) y portadas de los discos.
-5. Confirmar integrantes y roles.
-6. Antes de publicar para el público: `showPending: false` en `data.js` oculta todo lo que no tenga link.
+1. **TikTok:** el link de atom.bio está roto (sin usuario) y no aparece en búsquedas públicas. Con el usuario, se agrega en `data.js`.
+2. **Entradas de Rosario, Santa Fe y Mar del Plata:** hoy figuran "Próximamente disponible". Cuando salgan, cargar `tickets: "https://..."` en cada fecha.
+3. PNG original del muñeco (la captura es de 243 px de ancho y en pantalla grande se nota) y portadas de los discos.
+4. Confirmar integrantes y roles.
