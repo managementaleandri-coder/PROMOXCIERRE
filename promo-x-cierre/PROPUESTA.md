@@ -35,7 +35,7 @@ Página de una sola columna, pensada para verse en el teléfono. **El muñeco vi
 
 ## Métricas
 
-Google Analytics 4 (gratis). Pasos: en analytics.google.com crear una cuenta y una propiedad → flujo de datos "Web" con la URL del sitio → copiar el **ID de medición** (empieza con `G-`) → pegarlo en `data.js` → `analytics: { ga4: "G-..." }`. Desde ahí se miden visitas, origen (Instagram, X, directo), país, dispositivo y cada botón tocado (eventos `click_spotify`, `click_entradas_west_party`, `click_whatsapp`, etc., en Informes → Interacción → Eventos).
+Instalado **Google Tag Manager** (`GTM-WVPH3BPT`, en `data.js` → `analytics.gtm`). Cada botón tocado envía al dataLayer el evento `click_boton` con `boton`, `seccion` y `link_url`. Para medir, dentro del contenedor hay que agregar la etiqueta de Google Analytics 4 (tipo "Etiqueta de Google", ID `G-…`, activador "Todas las páginas") y publicar el contenedor. Alternativa sin Tag Manager: pegar el ID `G-…` en `analytics.ga4` (no usar las dos con la misma etiqueta para no contar doble).
 
 Para saber desde dónde entran, usar un link distinto en cada lugar:
 - Bio de Instagram: `https://managementaleandri-coder.github.io/PROMOXCIERRE/?utm_source=instagram&utm_medium=bio`

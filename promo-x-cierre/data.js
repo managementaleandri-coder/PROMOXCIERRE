@@ -43,10 +43,14 @@ window.PXC = {
     message: "Hola! Escribo por booking de Promo x Cierre.",
   },
 
-  // Métricas con Google Analytics 4: pegar acá el "ID de medición" (empieza con G-). Vacío = no se mide nada.
-  // Mide visitas, de dónde vienen (Instagram, X, directo, links con utm_...), país, dispositivo y cada botón tocado
-  // (eventos "click_..."). Solo funciona en el sitio publicado, no en la vista previa de claude.ai.
-  analytics: { ga4: "" },
+  // Métricas. Solo funcionan en el sitio publicado (no en la vista previa de claude.ai).
+  //  - gtm: contenedor de Google Tag Manager (GTM-...). Carga el contenedor; lo que mide depende de las
+  //    etiquetas que tenga adentro. Cada botón tocado manda al dataLayer el evento "click_boton"
+  //    con las variables boton, seccion y link_url.
+  //  - ga4: "ID de medición" de Google Analytics 4 (G-...). Conecta Analytics directo, sin configurar
+  //    nada más: visitas, origen (Instagram, X, directo, links con utm_...), país, dispositivo y un
+  //    evento "click_<botón>" por cada botón tocado.
+  analytics: { gtm: "GTM-WVPH3BPT", ga4: "" },
 
   // true: los botones sin link se muestran marcados como "link pendiente" (útil para revisar).
   // false: se ocultan (para publicar).

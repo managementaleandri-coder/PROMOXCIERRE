@@ -124,10 +124,20 @@
   }
 
   /* =====================================================================
-   * Métricas (Google Analytics 4). Se carga solo si data.js tiene un ID.
-   * Cada botón tocado manda un evento "click_<botón>" con la URL de destino.
+   * Métricas. Se cargan solo si data.js tiene un ID (Tag Manager y/o Analytics 4).
+   * Cada botón tocado manda un evento con el nombre del botón y la URL de destino.
    * ===================================================================== */
-  const GA = D.analytics && /^G-[A-Z0-9]+$/i.test(D.analytics.ga4 || "") ? D.analytics.ga4 : "";
+  const A = D.analytics || {};
+  const GTM = /^GTM-[A-Z0-9]+$/i.test(A.gtm || "") ? A.gtm : "";
+  const GA = /^G-[A-Z0-9]+$/i.test(A.ga4 || "") ? A.ga4 : "";
+  if (GTM) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM)}`;
+    document.head.appendChild(s);
+  }
   if (GA) {
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
@@ -140,17 +150,17 @@
   }
   const slug = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   function track(btn) {
-    if (!GA || typeof window.gtag !== "function") return;
+    if (!GTM && !GA) return;
     const show = btn.closest(".show"), rel = btn.closest(".release");
     const what = show ? `entradas_${slug(show.querySelector(".show__venue")?.textContent)}`
       : rel ? `escuchar_${slug(rel.querySelector(".release__title")?.textContent)}`
       : slug(btn.querySelector("span:not(.btn__icon)")?.firstChild?.textContent || btn.textContent);
     const section = show ? "fechas" : rel ? "discos" : btn.closest("#contact") ? "booking" : "botones";
-    gtag("event", `click_${what}`.slice(0, 40), {
-      link_url: btn.getAttribute("href") || "",
-      section,
-      transport_type: "beacon",
-    });
+    const link_url = btn.getAttribute("href") || "";
+    if (GTM) window.dataLayer.push({ event: "click_boton", boton: what, seccion: section, link_url });
+    if (GA && typeof window.gtag === "function") {
+      gtag("event", `click_${what}`.slice(0, 40), { link_url, section, transport_type: "beacon" });
+    }
   }
 
   /* Aviso para links que todavía no están cargados */
