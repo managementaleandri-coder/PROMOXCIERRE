@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PROMO X CIERRE</title>
+  <meta name="description" content="Música, fechas y links de PROMO X CIERRE. Rap argentino.">
+  <meta name="theme-color" content="#f4efe3">
+  <meta property="og:title" content="PROMO X CIERRE">
+  <meta property="og:description" content="Música, fechas y links. Pasen y gocen.">
+  <meta property="og:type" content="website">
+  <link rel="preload" href="fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+  <!-- Solo en pantallas anchas: el nombre corre en vertical por los costados de la columna -->
+  <div class="side side--l" aria-hidden="true">Promo x Cierre · CCW Tour · Promo x Cierre · CCW Tour ·</div>
+  <div class="side side--r" aria-hidden="true">Pasen y gocen · Rap, fútbol, sala de ensayo · Pasen y gocen ·</div>
+
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow" id="tagline"></p>
+      <h1 class="wordmark">
+        <span class="wordmark__line">Promo <span class="x" aria-hidden="true">x</span></span>
+        <span class="wordmark__line">Cierre</span>
+        <span class="sr-only"> — rap argentino</span>
+      </h1>
+      <!-- Escenario: acá "vive" el muñeco cuando está parado sobre el primer botón -->
+      <div class="stage">
+        <p class="tour-chip" id="tour-chip"></p>
+      </div>
+    </header>
+
+    <nav class="links" id="links" aria-label="Escuchá y seguí a Promo x Cierre"></nav>
+
+    <section class="block" id="fechas" aria-labelledby="h-fechas">
+      <div class="zip" aria-hidden="true"></div>
+      <h2 id="h-fechas">Fechas</h2>
+      <ol class="shows" id="shows"></ol>
+    </section>
+
+    <section class="block" id="booking" aria-labelledby="h-booking">
+      <div class="zip" aria-hidden="true"></div>
+      <h2 id="h-booking">Booking</h2>
+      <div class="contact" id="contact"></div>
+    </section>
+
+    <section class="block" id="discos" aria-labelledby="h-discos">
+      <div class="zip" aria-hidden="true"></div>
+      <h2 id="h-discos">Discos</h2>
+      <div class="strip" id="releases"></div>
+    </section>
+
+    <section class="block" id="quienes" aria-labelledby="h-quienes">
+      <div class="zip" aria-hidden="true"></div>
+      <h2 id="h-quienes">Quiénes son</h2>
+      <div class="crew" id="crew"></div>
+    </section>
+
+    <footer class="foot">
+      <div class="zip" aria-hidden="true"></div>
+      <p id="foot-text">PROMO X CIERRE · Argentina · 2026</p>
+    </footer>
+  </main>
+
+  <!-- El muñeco: decorativo, no se puede tocar (los toques pasan al botón de abajo) -->
+  <div class="shadow" id="shadow" aria-hidden="true"></div>
+  <div class="puppet" id="puppet" aria-hidden="true">
+    <div class="puppet__img" id="puppet-img"></div>
+    <div class="bubble" id="bubble" hidden><span id="bubble-text"></span></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
